@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 470" role="img" aria-label="吊瓶照片">
+  <rect width="700" height="470" rx="18" fill="#efe0c4"/>
+  <rect x="52" y="42" width="596" height="356" rx="8" fill="#f7fbff"/>
+  <line x1="350" y1="48" x2="350" y2="405" stroke="#9ab7c4" stroke-width="8"/>
+  <path d="M350 96h112q32 0 32 32v144" stroke="#9ab7c4" stroke-width="8" fill="none" stroke-linecap="round"/>
+  <rect x="252" y="80" width="95" height="160" rx="30" fill="#e7f7ff" stroke="#79b6cf" stroke-width="7"/>
+  <rect x="268" y="104" width="63" height="82" rx="18" fill="#fff" opacity=".65"/>
+  <path d="M300 239c0 55 91 41 91 102" stroke="#79b6cf" stroke-width="7" fill="none"/>
+  <circle cx="391" cy="343" r="8" fill="#79b6cf"/>
+  <path d="M493 273c31 14 50 40 60 78" stroke="#f6bad1" stroke-width="14" fill="none" stroke-linecap="round"/>
+  <text x="350" y="436" text-anchor="middle" fill="#8e7d78" font-size="22" font-family="KaiTi, STKaiti, serif">输液室的下午，蝉声隔着玻璃</text>
+</svg>

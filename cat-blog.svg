@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 470" role="img" aria-label="2025新博客养猫照片">
+  <rect width="700" height="470" rx="18" fill="#f7edd5"/>
+  <rect x="52" y="44" width="596" height="350" rx="16" fill="#dff4ff"/>
+  <rect x="80" y="270" width="540" height="80" rx="20" fill="#fff7df"/>
+  <g transform="translate(355 254)">
+    <path d="M-120-32c-33-120 41-161 93-97 46-63 126-30 100 99 33 17 56 48 50 79-13 73-244 76-258 4-7-35 17-66 15-85z" fill="#ffe0a5" stroke="#8f7762" stroke-width="7"/>
+    <path d="M-86-95l-49-58 6 87M46-98l60-51-16 88" fill="#ffe0a5" stroke="#8f7762" stroke-width="7"/>
+    <circle cx="-50" cy="-34" r="9" fill="#3e4d61"/>
+    <circle cx="39" cy="-34" r="9" fill="#3e4d61"/>
+    <path d="M-12-9q15 14 30 0M-86 2h-65M-83 24h-70M68 3h66M67 25h73" stroke="#8f7762" stroke-width="6" fill="none" stroke-linecap="round"/>
+  </g>
+  <text x="350" y="426" text-anchor="middle" fill="#7f7a9e" font-size="24" font-family="KaiTi, STKaiti, serif">2025 新博客：猫叫“西瓜”</text>
+</svg>

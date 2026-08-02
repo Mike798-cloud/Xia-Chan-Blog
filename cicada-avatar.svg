@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" role="img" aria-label="手绘小蝉头像">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff7c7"/>
+      <stop offset="1" stop-color="#bfe9ff"/>
+    </linearGradient>
+    <filter id="paper">
+      <feTurbulence type="fractalNoise" baseFrequency=".03" numOctaves="3" seed="7"/>
+      <feColorMatrix type="saturate" values=".2"/>
+      <feBlend in="SourceGraphic" mode="multiply"/>
+    </filter>
+  </defs>
+  <rect width="320" height="320" rx="38" fill="url(#bg)"/>
+  <g filter="url(#paper)" opacity=".28">
+    <rect width="320" height="320" fill="#fff"/>
+  </g>
+  <g transform="translate(160 156)" stroke="#6a8fb1" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M-52-12c-42-28-78-20-82 14-5 43 52 59 96 30"/>
+    <path d="M52-12c42-28 78-20 82 14 5 43-52 59-96 30"/>
+    <path d="M-46 55c-28 30-52 52-74 62"/>
+    <path d="M46 55c28 30 52 52 74 62"/>
+    <path d="M-34-58c-28-28-54-34-72-28"/>
+    <path d="M34-58c28-28 54-34 72-28"/>
+  </g>
+  <ellipse cx="160" cy="153" rx="42" ry="74" fill="#7bc0d5" stroke="#477990" stroke-width="7"/>
+  <ellipse cx="160" cy="126" rx="54" ry="40" fill="#f8bfd2" stroke="#8f6375" stroke-width="7"/>
+  <circle cx="139" cy="121" r="8" fill="#3f5165"/>
+  <circle cx="181" cy="121" r="8" fill="#3f5165"/>
+  <path d="M146 145q14 12 28 0" fill="none" stroke="#3f5165" stroke-width="6" stroke-linecap="round"/>
+  <path d="M160 171v48" stroke="#477990" stroke-width="5"/>
+  <path d="M139 183h42M137 203h46" stroke="#477990" stroke-width="4" opacity=".7"/>
+  <text x="160" y="289" text-anchor="middle" fill="#6a7e9f" font-size="22" font-family="Comic Sans MS, Microsoft YaHei, sans-serif">夏蝉</text>
+</svg>

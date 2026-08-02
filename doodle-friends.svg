@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 360" role="img" aria-label="知夏和苏晓的Q版涂鸦">
+  <rect width="520" height="360" rx="24" fill="#fff9d9"/>
+  <path d="M36 44c78-17 143 8 214-2 76-11 143-30 235-5" fill="none" stroke="#ffd0df" stroke-width="9" opacity=".65"/>
+  <path d="M34 320c96-39 169 19 253-13 79-31 138-15 196 6" fill="none" stroke="#b9e7ff" stroke-width="9" opacity=".75"/>
+  <g transform="translate(145 188)" stroke="#5e6d84" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="0" cy="-80" r="38" fill="#ffd7e5"/>
+    <path d="M-36-86c18-34 54-28 72 0" fill="#7ac8e8"/>
+    <path d="M-38-42c-10 46-11 102 38 102s48-56 38-102" fill="#f8c5d8"/>
+    <path d="M-32 18l-46 44M32 18l46 44M-18 59l-11 58M18 59l12 58"/>
+    <circle cx="-12" cy="-81" r="4" fill="#5e6d84"/>
+    <circle cx="14" cy="-81" r="4" fill="#5e6d84"/>
+    <path d="M-10-61q10 8 22 0" fill="none"/>
+  </g>
+  <g transform="translate(365 186)" stroke="#5e6d84" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="0" cy="-80" r="38" fill="#ffe7a8"/>
+    <path d="M-37-92c6-30 73-31 78 9 1 8-6 24-10 31-14-20-45-21-65-4-4-13-5-25-3-36z" fill="#6e86b8"/>
+    <path d="M-39-42c-12 48-9 105 39 105s51-57 39-105" fill="#bfe7ff"/>
+    <path d="M-34 20l-47 33M35 20l48 33M-19 62l-9 56M19 62l9 56"/>
+    <circle cx="-13" cy="-81" r="4" fill="#5e6d84"/>
+    <circle cx="14" cy="-81" r="4" fill="#5e6d84"/>
+    <path d="M-13-60q12 12 26 0" fill="none"/>
+  </g>
+  <path d="M210 114c30 25 65 25 96 0" fill="none" stroke="#ff9ebc" stroke-width="8" stroke-linecap="round"/>
+  <text x="260" y="70" text-anchor="middle" fill="#9d84b7" font-size="24" font-family="Comic Sans MS, Microsoft YaHei">中考完一起去看海！</text>
+</svg>
