@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 470" role="img" aria-label="戴口罩侧脸照片">
+  <rect width="700" height="470" rx="18" fill="#efe3cc"/>
+  <rect x="46" y="38" width="608" height="360" rx="10" fill="#e8f1f6"/>
+  <circle cx="340" cy="184" r="104" fill="#ffe1cf"/>
+  <path d="M335 91c82 8 122 67 103 135-40-36-98-40-165-6-22-63-5-116 62-129z" fill="#4f6b89"/>
+  <path d="M261 195c56 17 119 17 168-4l4 58c-44 28-112 27-169-2z" fill="#fff" stroke="#a5cfdf" stroke-width="6"/>
+  <path d="M275 213h142M280 235h132" stroke="#d2e8ef" stroke-width="5"/>
+  <circle cx="320" cy="170" r="6" fill="#3c4656"/>
+  <path d="M392 162q19 5 34 21" stroke="#3c4656" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <rect x="98" y="306" width="500" height="56" rx="8" fill="#fff8e2" opacity=".85"/>
+  <text x="350" y="341" text-anchor="middle" fill="#9b7c7e" font-size="24" font-family="KaiTi, STKaiti, serif">“不许拍正脸，晓晓会认出来的。”</text>
+  <text x="350" y="432" text-anchor="middle" fill="#8e7d78" font-size="22" font-family="KaiTi, STKaiti, serif">住院期间，相册未公开</text>
+</svg>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#c9ebff">
+  <meta name="description" content="一款以2008年个人博客为载体的纯前端叙事解谜游戏。">
+  <title>夏蝉博客：2008备份修复</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="paywall.css">
+</head>
+<body>
+  <div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
+  <div class="petal-layer" id="petal-layer" aria-hidden="true"></div>
+  <main id="app">
+    <section id="restore-screen" class="restore-screen">
+      <div class="restore-card">
+        <div class="restore-titlebar"><span>旧博客抢救系统 v2.1</span><span>Archive Rescue / 2025</span></div>
+        <div class="restore-body">
+          <div class="restore-left">
+            <p class="eyebrow">一份来自2008年的损坏备份</p>
+            <h1>夏蝉博客：2008备份修复</h1>
+            <p>正在读取压缩包 <strong>xiachan_200808_backup.rar</strong>。文件存在损坏，需要先验证密码。</p>
+            <div class="progress-shell" aria-label="备份修复进度"><div id="boot-progress" class="progress-fill"></div></div>
+            <div class="restore-log" id="restore-log">
+              <p>&gt; 发现博客模板：浅蓝柔粉 / 侧边栏挂件 / 留言板</p>
+              <p>&gt; 数据损坏率：32%</p>
+              <p>&gt; 等待解压密码……</p>
+            </div>
+            <label class="field-label" for="unzip-password">解压密码</label>
+            <div class="password-row">
+              <input id="unzip-password" class="blog-input" placeholder="破壳日六位数字" maxlength="12" inputmode="numeric" autocomplete="off">
+              <button id="unzip-submit" class="blog-btn primary" onclick="Game.checkUnzip()">解压并开始修复</button>
+              <button class="blog-btn" onclick="Game.showHint('unzip')">免费提示</button>
+            </div>
+            <p class="free-note">提示系统完全免费，与自愿支持无关，也不会影响结局。</p>
+          </div>
+          <aside class="metadata-card">
+            <h2>备份元数据</h2>
+            <dl>
+              <dt>博客名</dt><dd>夏蝉的小窝</dd>
+              <dt>博主</dt><dd>林知夏 / 笔名：夏蝉</dd>
+              <dt>生日</dt><dd class="important">07/12/1994</dd>
+              <dt>最后更新</dt><dd>2008/08/05　“对不起。”</dd>
+              <dt>密码提示</dt><dd>破壳日六位数字</dd>
+            </dl>
+            <img src="cicada-avatar.svg" alt="手绘小蝉头像" class="meta-avatar">
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="blog-screen" class="blog-screen hidden">
+      <header class="blog-header">
+        <div class="blog-banner">
+          <img src="cicada-avatar.svg" alt="夏蝉头像">
+          <div><h1>夏蝉的小窝</h1><p>写给夏天，写给晓晓，也写给还会路过这里的人。</p></div>
+        </div>
+        <div class="header-tools" aria-label="游戏工具">
+          <label class="search-wrap"><span>站内搜索</span><input id="site-search" class="blog-input small" placeholder="ID / 日期 / 关键词" autocomplete="off"></label>
+          <button class="blog-btn" onclick="Game.searchSite()">搜索线索</button>
+          <button class="blog-btn" onclick="Game.openHintPanel()">💡 免费提示</button>
+          <button class="blog-btn" onclick="Game.manualSave()">💾 手动存档</button>
+          <button class="blog-btn" id="audio-toggle" onclick="AudioSys.toggle()">♪ 音效开</button>
+          <button class="blog-btn support" onclick="Game.showSupport()">♡ 自愿支持 ¥1</button>
+          <button class="blog-btn danger" onclick="Game.confirmReset()">重新开始</button>
+        </div>
+      </header>
+
+      <section class="mission-card" aria-live="polite">
+        <div><span class="mission-kicker">当前修复目标</span><strong id="mission-title">恢复缺失的七天日记</strong></div>
+        <p id="mission-desc">在旧日历中选中从7月29日到8月4日的连续日期。</p>
+        <button class="blog-btn" onclick="Game.hintForCurrent()">查看本阶段免费提示</button>
+      </section>
+
+      <div class="blog-layout">
+        <aside class="blog-sidebar">
+          <section class="widget profile-widget">
+            <h3>博主资料</h3><img src="cicada-avatar.svg" alt="手绘小蝉头像">
+            <p><strong>夏蝉</strong> / 初二 / 青槐市二中</p><p>喜欢画画、动漫、蓝色圆珠笔，还有夏天傍晚的风。</p>
+          </section>
+          <section class="widget">
+            <h3>修复进度</h3><div class="meter"><span id="repair-meter"></span></div><p id="repair-percent">0%</p>
+            <button class="mini-link" onclick="Game.toggleClues()">查看已收集线索 <span id="clue-count">0/24</span></button>
+          </section>
+          <section class="widget" id="calendar-widget">
+            <h3>旧日历</h3>
+            <div class="calendar-grid" id="calendar-grid">
+              <button data-day="0728" disabled>7.28</button><button data-day="0729" onclick="Game.toggleDate(this)">7.29</button>
+              <button data-day="0730" onclick="Game.toggleDate(this)">7.30</button><button data-day="0731" onclick="Game.toggleDate(this)">7.31</button>
+              <button data-day="0801" onclick="Game.toggleDate(this)">8.1</button><button data-day="0802" onclick="Game.toggleDate(this)">8.2</button>
+              <button data-day="0803" onclick="Game.toggleDate(this)">8.3</button><button data-day="0804" onclick="Game.toggleDate(this)">8.4</button>
+              <button data-day="0805" disabled>8.5</button><button data-day="0808" onclick="Game.olympicEgg()">8.8</button>
+            </div>
+            <button id="date-repair" class="blog-btn wide" onclick="Game.repairDates()">修复选中日期</button>
+            <p id="date-feedback" class="inline-feedback"></p>
+          </section>
+          <section class="widget music-widget"><h3>背景音乐</h3><div class="player-screen" id="player-screen">♪ 卡农 Piano ver.</div><button class="blog-btn wide" onclick="Game.playBlogMusic()">播放 / 切换</button></section>
+          <section class="widget"><h3>友情链接</h3><button class="friend-link" onclick="Game.openSuBlog()">苏晓的博客</button><button class="friend-link" onclick="Game.showMaterialSite()">动漫素材站</button><button class="friend-link" onclick="Game.deadForum()">漫展论坛</button><button class="friend-link hidden-link" onclick="Game.qinghuaiCharity()">青槐市儿童公益</button></section>
+          <section class="widget visitor-widget"><h3>访客计数</h3><button class="counter" id="visitor-counter" onclick="Game.bumpCounter()">001307</button><p>点击计数器，也许会遇到特别数字。</p></section>
+        </aside>
+
+        <section class="blog-main">
+          <nav class="tabs" aria-label="博客板块">
+            <button class="tab active" data-tab="home" onclick="Game.goTab('home')">首页日记</button>
+            <button class="tab locked" data-tab="messages" onclick="Game.goTab('messages')">留言板</button>
+            <button class="tab locked" data-tab="album" onclick="Game.goTab('album')">相册 / 私密</button>
+            <button class="tab locked" data-tab="secret" onclick="Game.goTab('secret')">知了不说夏</button>
+            <button class="tab locked" data-tab="truth" onclick="Game.goTab('truth')">真相页</button>
+          </nav>
+
+          <article class="tab-page active" data-page="home">
+            <section class="blog-post"><div class="post-date">2008.07.28</div><h2>蝉鸣好吵，但夏天很好</h2><p>今天和晓晓约好，中考完去看海。她说要买同款贝壳手链，我说我要画一整本海边日记。</p><button class="doodle-btn" onclick="Game.showDoodle()">查看边角涂鸦</button></section>
+            <section class="blog-post damaged" id="missing-diary"><div class="post-date">2008.07.29 - 2008.08.04</div><h2>损坏的7天</h2><p>日记索引从7.28直接跳到8.5。请在左侧日历选中完整缺失区间。</p><div id="recovered-days" class="recovered-days hidden"><p><b>7.29</b>：体育课跑两圈就喘不过气，晓晓笑我暑假前就开始偷懒。</p><p><b>7.31</b>：妈妈说周末去医院复查。只是复查，应该没事吧。</p><p><b>8.02</b>：医生让我先别上网。我把晓晓的留言看了三遍。</p><p><b>8.04</b>：芣想让晓晓潑心，狚湜莪芣嘚芣趉。</p></div></section>
+            <section class="puzzle-card"><div class="puzzle-head"><div><span>主线谜题 2</span><h2>火星文破译</h2></div><button class="blog-btn" onclick="Game.showHint('mars')">三级免费提示</button></div><p>把修复出的火星文核心意思概括为关键词：<span class="mars">芣想让晓晓潑心，狚湜莪芣嘚芣趉</span></p><div class="form-line"><input id="mars-answer" class="blog-input" placeholder="输入关键词"><button id="mars-submit" class="blog-btn primary" onclick="Game.checkMars()">提交破译</button></div><p id="mars-feedback" class="inline-feedback"></p></section>
+            <section class="blog-post last-post"><div class="post-date">2008.08.05</div><h2>对不起</h2><p>对不起。</p><p class="soft">这三个字像卡在备份里的小刺。系统暂时无法恢复更多上下文。</p></section>
+          </article>
+
+          <article class="tab-page" data-page="messages">
+            <section class="message-board"><div class="puzzle-head"><div><span>主线谜题 3</span><h2>留言板草稿匹配</h2></div><button class="blog-btn" onclick="Game.showHint('replies')">三级免费提示</button></div><p>根据留言内容，为每条留言选择最合适的未发送草稿。每个回复只使用一次。</p>
+              <div class="message-row" data-msg="m1"><span><b>晓晓：</b>你怎么又不回我短信！明天讲义借我抄一下嘛。</span><select onchange="Game.pickReply('m1',this.value)"><option value="">选择草稿回复</option><option value="r1">讲义夹在数学书里</option><option value="r2">等我回来再说</option><option value="r3">不要熬夜背历史</option><option value="r4">照片我收到了</option><option value="r5">我也想去看海</option></select><small></small></div>
+              <div class="message-row" data-msg="m2"><span><b>晓晓：</b>一模要来了，我好烦，我是不是考不上市一中啊 TAT</span><select onchange="Game.pickReply('m2',this.value)"><option value="">选择草稿回复</option><option value="r1">讲义夹在数学书里</option><option value="r2">等我回来再说</option><option value="r3">不要熬夜背历史</option><option value="r4">照片我收到了</option><option value="r5">我也想去看海</option></select><small></small></div>
+              <div class="message-row" data-msg="m3"><span><b>陈屿：</b>漫展照片传你邮箱了，有一张你们俩超像姐妹。</span><select onchange="Game.pickReply('m3',this.value)"><option value="">选择草稿回复</option><option value="r1">讲义夹在数学书里</option><option value="r2">等我回来再说</option><option value="r3">不要熬夜背历史</option><option value="r4">照片我收到了</option><option value="r5">我也想去看海</option></select><small></small></div>
+              <div class="message-row" data-msg="m4"><span><b>晓晓：</b>你说中考完看海，还算数吧？</span><select onchange="Game.pickReply('m4',this.value)"><option value="">选择草稿回复</option><option value="r1">讲义夹在数学书里</option><option value="r2">等我回来再说</option><option value="r3">不要熬夜背历史</option><option value="r4">照片我收到了</option><option value="r5">我也想去看海</option></select><small></small></div>
+              <div class="message-row" data-msg="m5"><span><b>晓晓：</b>你是不是生我气了？至少告诉我你在哪里。</span><select onchange="Game.pickReply('m5',this.value)"><option value="">选择草稿回复</option><option value="r1">讲义夹在数学书里</option><option value="r2">等我回来再说</option><option value="r3">不要熬夜背历史</option><option value="r4">照片我收到了</option><option value="r5">我也想去看海</option></select><small></small></div>
+              <div class="message-row muted"><span><b>晓晓：</b>你没有第六条回复。我后来才知道，原来有些消息不是不想回。</span></div>
+              <div class="form-line"><button id="reply-submit" class="blog-btn primary" onclick="Game.checkReplies()">核对五条草稿</button><button class="blog-btn" onclick="Game.clearReplies()">清空重选</button><button class="blog-btn" onclick="Game.hiddenPageSix()">淡淡的第6页</button></div><p id="reply-feedback" class="inline-feedback"></p>
+            </section>
+            <section id="draft-box" class="puzzle-card hidden"><h2>草稿箱：没发给苏晓的长信</h2><p>晓晓，我不是搬家，也不是生你的气。医生说我要住院静养，妈妈把电脑线拔了。</p><p>我最怕影响你中考。你那么努力，我不能让你每天想着我有没有好一点。</p><button class="blog-btn primary" onclick="Game.unlockAlbum()">整理为线索并修复相册</button></section>
+            <section id="su-blog" class="puzzle-card hidden"><h2>苏晓的博客：找知夏</h2><p>2008.09.01：开学了。她没来。</p><p>2008.09.18：陈屿把毕业照传给我，照片角落怎么会有医院的牌子？</p><figure class="photo-card"><img src="graduation-photo.svg" alt="毕业照，角落露出青槐医院标志"><figcaption>毕业照 / 角落存在可调查信息</figcaption><button class="photo-action" onclick="Game.photoInfo()">查看图片信息与备注</button></figure></section>
+          </article>
+
+          <article class="tab-page" data-page="album">
+            <section class="album-grid"><figure class="photo-card"><img src="doodle-friends.svg" alt="知夏和苏晓涂鸦"><figcaption>公开相册 / 一起去看海</figcaption></figure><figure class="photo-card"><img src="graduation-photo.svg" alt="毕业照"><figcaption>班级合照</figcaption><button class="photo-action" onclick="Game.photoInfo()">调查图片信息</button></figure><figure class="photo-card locked-photo" id="private-album-preview"><img src="hospital-window.svg" alt="病房窗台"><figcaption>私密相册 / 请输入密码</figcaption></figure></section>
+            <section class="puzzle-card"><div class="puzzle-head"><div><span>主线谜题 4</span><h2>私密相册密码</h2></div><button class="blog-btn" onclick="Game.showHint('album')">三级免费提示</button></div><p>答案来自两人的一个明确约定。</p><div class="form-line"><input id="album-password" class="blog-input" placeholder="输入中文短语"><button id="album-submit" class="blog-btn primary" onclick="Game.checkAlbumPass()">解锁相册</button></div><p id="album-feedback" class="inline-feedback"></p></section>
+            <section id="private-album" class="album-grid hidden"><figure class="photo-card"><img src="hospital-window.svg" alt="病房窗台照片"><figcaption>病房窗台，2008.8</figcaption></figure><figure class="photo-card"><img src="masked-sideface.svg" alt="戴口罩侧脸照片"><figcaption>“不许拍正脸，晓晓会认出来的。”</figcaption></figure><figure class="photo-card"><img src="iv-drip.svg" alt="吊瓶照片"><figcaption>输液室的下午，蝉声隔着玻璃。</figcaption></figure></section>
+            <section class="puzzle-card"><div class="puzzle-head"><div><span>主线谜题 5</span><h2>私密日记密码</h2></div><button class="blog-btn" onclick="Game.showHint('diary')">三级免费提示</button></div><p>答案是两人关于升学的共同心愿。</p><div class="form-line"><input id="diary-password" class="blog-input" placeholder="输入中文短语"><button id="diary-submit" class="blog-btn primary" onclick="Game.checkDiaryPass()">解锁私密日记</button></div><p id="diary-feedback" class="inline-feedback"></p></section>
+            <section id="private-diary" class="blog-post hidden"><div class="post-date">私密日记 / 2008.08 - 2009.06</div><h2>我没有真的走远</h2><p>病毒性心肌炎。医生说不能劳累，不能上网。可是晓晓快中考了，我不能让她每天跑医院。</p><p>我注册了一个小号，但ID在毕业照的图片备注里。找到它后，用站内搜索进入小号博客。</p></section>
+          </article>
+
+          <article class="tab-page" data-page="secret">
+            <section class="blog-post secret-blog"><div class="post-date">小号博客：知了不说夏</div><h2>匿名也可以陪你走一段</h2><p>2008.08.09：给晓晓留言：历史最后两课一定要背，别问我怎么知道。</p><p>2008.11.21：她一模没考好。我打了很多字，最后只发了“你已经很棒了”。</p><p>2009.06.18：中考结束。她说想去看海。我今天出院了。</p><p>2025.06.12：我把备份提交给抢救计划。麻烦帮我把故事讲完。</p></section>
+            <section class="puzzle-card"><div class="puzzle-head"><div><span>主线谜题 7</span><h2>时间线对应验证</h2></div><button class="blog-btn" onclick="Game.showHint('timeline')">三级免费提示</button></div><p>点击一个节点，再用上下移动调整顺序。相同月份的节点按语义先后排列。</p><div id="timeline-list" class="timeline-list"></div><div class="form-line"><button class="blog-btn" onclick="Game.moveTimeline(-1)">上移</button><button class="blog-btn" onclick="Game.moveTimeline(1)">下移</button><button class="blog-btn" onclick="Game.resetTimeline()">恢复初始乱序</button><button id="timeline-submit" class="blog-btn primary" onclick="Game.checkTimeline()">校验时间线</button></div><p id="timeline-feedback" class="inline-feedback"></p></section>
+          </article>
+
+          <article class="tab-page" data-page="truth">
+            <section class="blog-post"><div class="post-date">最终修复页</div><h2>给苏晓，也给路过这里的人</h2><p>原来这份备份不是偶然被发现的。2025年，是林知夏自己匿名提交了旧博客。她想知道那段青春有没有人记得，也想知道久别多年后，自己是否还可以说一句“好久不见”。</p><p>苏晓也提交了自己的博客备份。两个夏天，在同一个抢救计划里重新遇见。</p><figure class="photo-card"><img src="reunion-photo.svg" alt="知夏和苏晓重逢合照"><figcaption>夏天的蝉鸣，终于等到了回音。</figcaption></figure></section>
+            <section class="puzzle-card"><div class="puzzle-head"><div><span>最终互动</span><h2>留言板结局</h2></div><button class="blog-btn" onclick="Game.showHint('ending')">免费提示</button></div><p>替知夏留下她终于敢说出口的话。结局不会按文字内容评判善恶。</p><textarea id="final-message" class="blog-textarea" placeholder="比如：晓晓，好久不见。"></textarea><div class="form-line"><button id="ending-submit" class="blog-btn primary" onclick="Game.submitEnding()">提交留言</button></div></section>
+          </article>
+        </section>
+      </div>
+      <footer class="blog-footer"><button class="admin-entry" onclick="Game.openAdmin()">管理入口</button><span>Powered by 2008 old blog template · 本页由旧博客抢救计划恢复</span></footer>
+    </section>
+  </main>
+
+  <aside id="clue-panel" class="clue-panel" aria-label="修复线索"><div class="clue-head"><span>修复线索</span><button onclick="Game.toggleClues()" aria-label="关闭线索面板">×</button></div><div id="clue-list" class="clue-list"></div></aside>
+  <div id="dialog-root"></div>
+  <div id="toast-root" aria-live="polite" aria-atomic="true"></div>
+  <input type="file" id="save-import" accept="application/json" class="hidden" onchange="Game.importSave(event)">
+  <script src="audio.js"></script><script src="paywall.js"></script><script src="core.js"></script>
+</body>
+</html>
